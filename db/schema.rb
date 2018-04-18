@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417221540) do
+ActiveRecord::Schema.define(version: 20180418081129) do
+
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",                                null: false
+    t.text     "comment",    limit: 65535,             null: false
+    t.integer  "status",                   default: 0, null: false
+    t.integer  "user_id",                              null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email"
@@ -21,4 +31,5 @@ ActiveRecord::Schema.define(version: 20180417221540) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "posts", "users"
 end
