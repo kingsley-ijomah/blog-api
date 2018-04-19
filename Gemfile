@@ -9,7 +9,7 @@ end
 gem 'rails', '~> 5.0.7'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 gem 'puma', '~> 3.0'
-
+gem 'paperclip'
 
 
 group :development, :test do

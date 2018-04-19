@@ -6,8 +6,7 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of :firstname }
   it { should validate_presence_of :lastname }
 
-  it { should respond_to :password_digest}
-  it { should respond_to :authenticate}
+  it { should have_secure_password }
 
   it { should have_many(:posts) }
 end 

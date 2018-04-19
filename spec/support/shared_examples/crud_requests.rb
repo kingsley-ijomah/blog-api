@@ -152,15 +152,7 @@ def delete_request(record = model.last)
 end
 
 def valid_data
-  # edge case for bycrypt
-  # we don't want to submit password_digest
-  # instead we want to send password
-  attributes = build(model_to_s).attributes
-  if attributes.include?('password_digest')
-    attributes.except('id', 'created_at', 'updated_at', 'password_digest').merge(password: 'sample')
-  else
-    attributes.except('id', 'created_at', 'updated_at')
-  end
+  attributes_for(model_to_s)
 end
 
 def invalid_data

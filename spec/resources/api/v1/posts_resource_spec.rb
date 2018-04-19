@@ -7,5 +7,5 @@ RSpec.describe Api::V1::PostResource, type: :resource do
   it { is_expected.to have_attribute :title }
   it { is_expected.to have_attribute :comment }
   it { is_expected.to have_attribute :status }
-  it { is_expected.to have_attribute :user_id }
+  it { is_expected.to have_attribute :image }
 end

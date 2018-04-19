@@ -4,5 +4,6 @@ FactoryBot.define do
     comment Faker::Lorem.sentence
     status Post.statuses[:active]
     user
+    image nil
   end
 end

@@ -8,5 +8,10 @@ RSpec.describe Post, type: :model do
   it { should validate_presence_of :user }
   it { should validate_presence_of :status }
 
+  it { should have_attached_file(:image) }
+  it { should validate_attachment_content_type(:image).
+        allowing("image/gif", "image/png", "image/jpeg", "image/jpg").
+        rejecting('text/plain', 'text/xml') }
+
   it { should belong_to(:user) }
 end
