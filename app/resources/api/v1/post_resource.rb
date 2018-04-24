@@ -1,5 +1,7 @@
 class Api::V1::PostResource < JSONAPI::Resource
-  attributes :title, :comment, :status, :image
+  attributes :title, :comment, :status, :image, :user_id
+
+  has_many :comments
 
   before_save do
     @model.user_id = context[:current_user].id if @model.new_record?

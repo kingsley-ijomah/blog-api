@@ -8,4 +8,5 @@ RSpec.describe Api::V1::PostResource, type: :resource do
   it { is_expected.to have_attribute :comment }
   it { is_expected.to have_attribute :status }
   it { is_expected.to have_attribute :image }
+  it { is_expected.to have_many(:comments) }
 end

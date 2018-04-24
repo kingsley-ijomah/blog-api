@@ -14,4 +14,5 @@ RSpec.describe Post, type: :model do
         rejecting('text/plain', 'text/xml') }
 
   it { should belong_to(:user) }
+  it { should have_many(:comments) }
 end

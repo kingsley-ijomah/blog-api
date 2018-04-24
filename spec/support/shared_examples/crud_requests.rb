@@ -5,6 +5,7 @@
 #
 # include_examples "crud_requests", crud_methods  do 
 #   let(:model) { Driver }
+#   let(:belongs_to) { { user_id: User.create.id } }
 #   let(:api_version) { 'v1' }
 # end
 
@@ -152,7 +153,7 @@ def delete_request(record = model.last)
 end
 
 def valid_data
-  attributes_for(model_to_s)
+  attributes_for(model_to_s).merge(belongs_to)
 end
 
 def invalid_data

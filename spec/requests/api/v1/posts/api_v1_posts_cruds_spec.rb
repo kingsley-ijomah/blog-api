@@ -7,5 +7,6 @@ RSpec.describe "Api::V1::Posts::Crud", type: :request do
   include_examples "crud_requests", crud_methods do 
     let(:model) { Post }
     let(:api_version) { 'v1' }
+    let(:belongs_to) { { user_id: create(:user).id } }
   end
 end

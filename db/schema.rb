@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418105626) do
+ActiveRecord::Schema.define(version: 20180424154038) do
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "post_id"
+    t.string   "fullname"
+    t.text     "content",    limit: 65535
+    t.integer  "status"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+  end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",                                        null: false
@@ -26,6 +36,12 @@ ActiveRecord::Schema.define(version: 20180418105626) do
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -35,5 +51,6 @@ ActiveRecord::Schema.define(version: 20180418105626) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "comments", "posts"
   add_foreign_key "posts", "users"
 end

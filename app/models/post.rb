@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   enum status: [:pending, :active]
   validates :title, :comment, :user, :status, presence: true
