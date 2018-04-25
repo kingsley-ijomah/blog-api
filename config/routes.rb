@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       jsonapi_resources :users, except: [:index]
       jsonapi_resources :posts
       jsonapi_resources :comments, only: [:create]
+      jsonapi_resources :tags, except: [:show]
     end
   end
 end
