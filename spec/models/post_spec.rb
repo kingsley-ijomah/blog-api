@@ -14,5 +14,8 @@ RSpec.describe Post, type: :model do
         rejecting('text/plain', 'text/xml') }
 
   it { should belong_to(:user) }
-  it { should have_many(:comments) }
+  it { should have_many(:comments).dependent(:destroy) }
+
+  it { should have_many(:post_tags).dependent(:destroy) }
+  it { should have_many(:tags).through(:post_tags) }
 end

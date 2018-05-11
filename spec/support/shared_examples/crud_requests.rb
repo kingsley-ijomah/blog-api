@@ -7,6 +7,7 @@
 #   let(:model) { Driver }
 #   let(:belongs_to) { { user_id: User.create.id } }
 #   let(:api_version) { 'v1' }
+#   let(:namespace) { 'backend' }
 # end
 
 
@@ -118,7 +119,7 @@ end
 # helper methods
 
 def base_endpoint
-  "/api/#{api_version}/#{model_to_s.pluralize}"
+  "/api/#{api_version}/#{namespace}/#{model_to_s.pluralize}"
 end
 
 def index_request
